@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="height:48px;background-color: cadetblue"></div>
+
+<div>
+    <form action="/home/" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="用户名"/>
+        <input type="text" name="sex" placeholder="性别"/>
+        <input type="text" name="age" placeholder="年龄"/>
+        <input type="submit" value="添加">
+    </form>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <td>{{ user_info.username }}</td>
+            <td>{{ user_info.sex }}</td>
+            <td>{{ user_info.age }}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

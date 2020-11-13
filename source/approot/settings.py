@@ -26,7 +26,10 @@ SECRET_KEY = '^j5&l4lk_-82(s)o%_avg0q4e266f6e2we6n*k09!&u%y=glsa'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+ # 静态资源路径
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+# html
+TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'client'),)
 
 # Application definition
 
@@ -79,6 +82,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',    # 数据库引擎
+
         'NAME': 'md', # 数据库名称
         'HOST': 'wxq.plus', # 数据库地址，本机 ip 地址 127.0.0.1
         'PORT': 3306, # 端口
