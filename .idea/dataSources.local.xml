@@ -6,7 +6,7 @@
       <auth-required>false</auth-required>
       <schema-mapping />
     </data-source>
-    <data-source name="wxq.plus" uuid="fb06151f-199e-4c79-9ac7-909b0e04ffe4">
+    <data-source name="wxq.plus" uuid="71d656fb-8d5e-4fba-8a63-ce8c2087f0b8">
       <database-info product="MySQL" version="5.7.32" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.21 (Revision: 33f65445a1bcc544eb0120491926484da168f199)" dbms="MYSQL" exact-version="5.7.32" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>

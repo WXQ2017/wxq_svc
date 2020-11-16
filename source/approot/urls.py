@@ -19,10 +19,10 @@ from .controller import test, testdb
 from app import views
 
 urlpatterns = [
-    path('/', test.hello),
     path('admin/', admin.site.urls),
     path('test/', test.hello),
     path('testdb/', testdb.testdb),
     path('login/', views.login),
-    path('home/', views.home)
+    path('home/', views.home),
+    path('', views.login)
 ]
