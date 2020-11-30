@@ -1,9 +1,19 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.http import require_http_methods
+from rest_framework import viewsets
+from .serializer import PersonSerializer
+from .models import Person
+
+
+class PersonViewSet(viewsets.ModelViewSet):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
 
 def login(request):
     error_msg = ""
@@ -24,7 +34,10 @@ def login(request):
             error_msg = '想进去没门!!'
     return render(request, 'login.html', {'error_msg': error_msg})
 
+
 USER_INFO = []
+
+
 def home(request):
     if request.method == 'POST':
         u = request.POST.get('username')
@@ -33,3 +46,18 @@ def home(request):
         temp = {'username': u, 'sex': s, 'age': a}
         USER_INFO.append(temp)
     return render(request, 'home.html', {'user_info': USER_INFO})
+
+
+@require_http_methods(["GET"])
+def user_login(request):
+    response = {}
+    try:
+        user = User(username = request.GET.get('username'))
+        response['msg'] = 'success'
+        response['status'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['status'] = 1
+    return JsonResponse(response)
+
+
