@@ -52,9 +52,13 @@ def home(request):
 def user_login(request):
     response = {}
     try:
-        user = User(username = request.GET.get('username'))
-        response['msg'] = 'success'
-        response['status'] = 0
+        user = User.objects.filter(username=request.GET.get('username'), password=request.GET.get('password')).count()  # 根据某个条件查询
+        if user == 1:
+            response['msg'] = 'success'
+            response['status'] = 0
+        else:
+            response['msg'] = 'fail'
+            response['status'] = 1
     except Exception as e:
         response['msg'] = str(e)
         response['status'] = 1
